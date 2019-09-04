@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+
+
+    <script>
+        var mensagem = "Mensagem Teste"
+
+
+        function imprimirMensagem() {
+            document.getElementById("app").innerText = mensagem;
+        }
+
+        function createImg(url) {
+            let img = document.createElement("img")
+            img.src = url
+            document.body.appendChild(img)
+        }
+
+        function carregarImagens() {
+            var imagens = [
+                'https://rollingstone.uol.com.br/media/_versions/legacy/2013/img-1016028-outra-lenda_widelg.jpg',
+                'https://i.pinimg.com/originals/64/e0/52/64e052f6d85ec0513ecb06c4d5619497.jpg'
+            ];
+
+            imagens.forEach(function (url) {
+                createImg(url);
+            })
+
+        }
+    </script>
+
+</head>
+
+<body onload="imprimirMensagem()">
+
+    <div id="app">
+
+    </div>
+</body>
+
+</html>

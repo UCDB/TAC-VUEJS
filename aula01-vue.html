@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="app">
+
+
+        <input type="text" v-model="mensagem">
+        {{mensagem}}
+
+        <div v-for='url in imagens'>
+            <img :src='url'>
+
+        </div>
+
+    </div>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            mensagem: 'Curso de Eng. Computação / Tads / UCDB / Virmerson',
+            imagens: [
+                'https://rollingstone.uol.com.br/media/_versions/legacy/2013/img-1016028-outra-lenda_widelg.jpg',
+                'https://i.pinimg.com/originals/64/e0/52/64e052f6d85ec0513ecb06c4d5619497.jpg'
+            ]
+        },
+        created: function () {
+            console.log('created...')
+            //Request
+            //setar o array imagens
+        }
+    });
+</script>
+
+
+</html>
