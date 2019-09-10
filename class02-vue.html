@@ -1,0 +1,57 @@
+<html>
+
+
+<head>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.4.95/css/materialdesignicons.min.css">
+</head>
+
+
+<body>
+    
+    <div id="app">
+
+            <input  placeholder="Name"  v-model="user.name" type="text"> 
+            <button v-on:click="save()" >Save</button>
+
+            <div v-for="(u,index) in users">
+                
+                <div> {{u.name}}  {{index}}</div>
+               
+                <div v-on:click="remove(index)" class="mdi mdi-trash-can"></div>
+                
+
+            </div>
+
+    </div>
+
+</body>
+
+<script>
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                user:{},
+                users:[{name:'João'}, {name:'Milad'} , {name:'Felipe'}]
+                
+            },
+            methods:{
+
+                remove:function(index){
+                    this.users.splice(index,1)
+                } ,
+                
+                save:function (){
+                    this.users.push(this.user)
+                    this.user={};
+                }, 
+                mensage:function (){
+                     alert("Clicked inside the VUE")
+                 }
+       
+            }
+        })
+    </script>
+</html>
