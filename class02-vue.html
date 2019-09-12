@@ -14,12 +14,14 @@
 
             <input  placeholder="Name"  v-model="user.name" type="text"> 
             <button v-on:click="save()" >Save</button>
+            <button v-on:click="reset()" v-if="editing" >Cancel</button>
 
-            <div v-for="(u,index) in users">
+            <div style="display: flex" v-for="(u,index) in users">
                 
                 <div> {{u.name}}  {{index}}</div>
                
-                <div v-on:click="remove(index)" class="mdi mdi-trash-can"></div>
+                <div  v-on:click="remove(index)" class="mdi mdi-trash-can"></div>
+                <div v-on:click="edit(index)" class="mdi mdi-account-edit "></div>
                 
 
             </div>
@@ -33,6 +35,8 @@
         var app = new Vue({
             el:'#app',
             data:{
+                editingIndex:-1,
+                editing:false,
                 user:{},
                 users:[{name:'João'}, {name:'Milad'} , {name:'Felipe'}]
                 
@@ -41,12 +45,27 @@
 
                 remove:function(index){
                     this.users.splice(index,1)
+                    this.reset();
                 } ,
                 
                 save:function (){
-                    this.users.push(this.user)
+                    if(this.editing==false){
+                        this.users.push(this.user)
+                        this.reset()
+                    }else{
+                        this.users.splice(this.editingIndex,1,this.user);
+                    }
+                },
+                edit: function(index){
+                    this.editing=true,
+                    this.editingIndex= index;
+                    this.user=  Object.assign({}, this.users[index])
+                } ,
+                reset:function (){
+                    this.editing=false, 
                     this.user={};
-                }, 
+                    this.editingIndex=-1;
+                },
                 mensage:function (){
                      alert("Clicked inside the VUE")
                  }
