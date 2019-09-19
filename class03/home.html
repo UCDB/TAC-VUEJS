@@ -1,0 +1,28 @@
+<html>
+
+
+    <head>
+
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <script defer src="router.js"></script>
+    </head>
+    <body>
+        
+        <div id="app">
+
+            <h1> Welcome </h1>
+            <p>
+                
+                <router-link to="/pag1"> Page 1 </router-link>
+                <router-link to="/pag2"> Page 2 </router-link>
+                <router-link to="/pag3/Virmerson"> Page 3 </router-link>
+            </p>
+
+            <router-view></router-view>
+        </div>
+
+    </body>
+
+
+</html>
